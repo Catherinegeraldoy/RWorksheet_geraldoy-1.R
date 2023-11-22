@@ -1,0 +1,694 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Worksheet \#4},
+  pdfauthor={Catherine G. Geraldoy},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Worksheet \#4}
+\author{Catherine G. Geraldoy}
+\date{2023-11-21}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(RColorBrewer)}
+\CommentTok{\#Using Loop Function}
+\CommentTok{\#1. Using the for loop, create an R script that will display a 5x5 matrix as shown in Figure 1. It must contain vectorA = [1,2,3,4,5] and a 5 x 5 zero matrix.}
+\NormalTok{vectorA }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{matrixA }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{5}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{5}\NormalTok{)}
+\NormalTok{matrixA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    0    0    0    0    0
+## [2,]    0    0    0    0    0
+## [3,]    0    0    0    0    0
+## [4,]    0    0    0    0    0
+## [5,]    0    0    0    0    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [,1] [,2] [,3] [,4] [,5]}
+\DocumentationTok{\#\# [1,] 0 0 0 0 0}
+\DocumentationTok{\#\# [2,] 0 0 0 0 0}
+\DocumentationTok{\#\# [3,] 0 0 0 0 0}
+\DocumentationTok{\#\# [4,] 0 0 0 0 0}
+\DocumentationTok{\#\# [5,] 0 0 0 0 0}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+\NormalTok{matrixA[i, j] }\OtherTok{\textless{}{-}} \FunctionTok{abs}\NormalTok{(vectorA[i] }\SpecialCharTok{{-}}\NormalTok{ vectorA[j])}
+\NormalTok{\}}
+\NormalTok{\}}
+\NormalTok{matrixA}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    0    1    2    3    4
+## [2,]    1    0    1    2    3
+## [3,]    2    1    0    1    2
+## [4,]    3    2    1    0    1
+## [5,]    4    3    2    1    0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [,1] [,2] [,3] [,4] [,5]}
+\DocumentationTok{\#\# [1,] 0 1 2 3 4}
+\DocumentationTok{\#\# [2,] 1 0 1 2 3}
+\DocumentationTok{\#\# [3,] 2 1 0 1 2}
+\DocumentationTok{\#\# [4,] 3 2 1 0 1}
+\DocumentationTok{\#\# [5,] 4 3 2 1 0}
+
+\CommentTok{\#2. Print the string “*” using for() function. The output should be the same as shown in Figure}
+\NormalTok{rightTriangle }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{) \{}
+\ControlFlowTok{for}\NormalTok{(j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{) \{}
+\NormalTok{rightTriangle }\OtherTok{=} \FunctionTok{c}\NormalTok{(rightTriangle, }\StringTok{"*"}\NormalTok{)}
+\DecValTok{1}
+
+\NormalTok{\}}
+\FunctionTok{print}\NormalTok{(rightTriangle)}
+\NormalTok{rightTriangle }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{()}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "*"
+## [1] "*" "*"
+## [1] "*" "*" "*"
+## [1] "*" "*" "*" "*"
+## [1] "*" "*" "*" "*" "*"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] "*"}
+\DocumentationTok{\#\# [1] "*" "*"}
+\DocumentationTok{\#\# [1] "*" "*" "*"}
+\DocumentationTok{\#\# [1] "*" "*" "*" "*"}
+\DocumentationTok{\#\# [1] "*" "*" "*" "*" "*"}
+
+\CommentTok{\#3. Get an input from the user to print the Fibonacci sequence starting from the 1st input up to 500. Use repeat and break statements. Write the R Scripts and its output.}
+\NormalTok{n }\OtherTok{\textless{}{-}} \FunctionTok{as.integer}\NormalTok{(}\FunctionTok{readline}\NormalTok{(}\AttributeTok{prompt =} \StringTok{"Enter the number of terms: "}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Enter the number of terms:
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Enter the number of terms:}
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{b }\OtherTok{\textless{}{-}} \DecValTok{1}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"Fibonacci Sequence:"}\NormalTok{, a, b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Fibonacci Sequence: 0 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Fibonacci Sequence: 0 1}
+\CommentTok{\# Generate the sequence}
+\ControlFlowTok{repeat}\NormalTok{ \{}
+\NormalTok{c }\OtherTok{\textless{}{-}}\NormalTok{ a }\SpecialCharTok{+}\NormalTok{ b}
+\ControlFlowTok{if}\NormalTok{ (c }\SpecialCharTok{\textgreater{}} \DecValTok{500}\NormalTok{) \{}
+\ControlFlowTok{break}
+\NormalTok{\}}
+\FunctionTok{cat}\NormalTok{(}\StringTok{", "}\NormalTok{,c)}
+\NormalTok{a }\OtherTok{\textless{}{-}}\NormalTok{ b}
+\NormalTok{b }\OtherTok{\textless{}{-}}\NormalTok{ c}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ,  1,  2,  3,  5,  8,  13,  21,  34,  55,  89,  144,  233,  377
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# , 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377}
+\CommentTok{\#Using Basic Graphics (plot(),barplot(),pie(),hist())}
+
+\CommentTok{\#4. Import the dataset as shown in Figure 1 you have created previously.}
+\CommentTok{\#a. What is the R script for importing an excel or a csv file? Display the first 6 rows of the dataset? Show your codes and its result.}
+\NormalTok{HouseholdData }\OtherTok{\textless{}{-}}\FunctionTok{read.table}\NormalTok{(}\StringTok{"Household.csv"}\NormalTok{,}\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sep =} \StringTok{","}\NormalTok{, }\AttributeTok{as.is =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{head}\NormalTok{(HouseholdData,}\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Shoe.Size Height Gender
+## 1       6.5   66.0      F
+## 2       9.5   68.0      F
+## 3       8.5   64.5      F
+## 4       8.5   65.0      F
+## 5      10.5   70.0      M
+## 6       7.0   64.0      F
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Shoe.Size Height Gender}
+\DocumentationTok{\#\# 1 6.5 66.0 F}
+\DocumentationTok{\#\# 2 9.5 68.0 F}
+\DocumentationTok{\#\# 3 8.5 64.5 F}
+\DocumentationTok{\#\# 4 8.5 65.0 F}
+\DocumentationTok{\#\# 5 10.5 70.0 M}
+\DocumentationTok{\#\# 6 7.0 64.0 F}
+\CommentTok{\#b. Create a subset for gender(female and male). How many observations are there in Male? How about in Female? Write the R scripts and its output.}
+\NormalTok{male\_subset }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(HouseholdData, Gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}M\textquotesingle{}}\NormalTok{)}
+\NormalTok{female\_subset }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(HouseholdData, Gender }\SpecialCharTok{==} \StringTok{\textquotesingle{}F\textquotesingle{}}\NormalTok{)}
+\NormalTok{male\_count }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(male\_subset)}
+\NormalTok{male\_count}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 14}
+\NormalTok{female\_count }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(female\_subset)}
+\NormalTok{female\_count}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 14
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 14}
+
+\CommentTok{\#c. Create a graph for the number of males and females for Household Data. Use plot(), chart type = barplot. Make sure to place title, legends, and colors. Write the R scripts and its result.}
+\NormalTok{count }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(male\_count, female\_count)}
+\NormalTok{gender }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"}\NormalTok{, }\StringTok{"Female"}\NormalTok{)}
+\FunctionTok{barplot}\NormalTok{(count,}
+\AttributeTok{names.arg =}\NormalTok{ gender,}
+\AttributeTok{main =} \StringTok{"The number of Males and Females in Household Data"}\NormalTok{,}
+\AttributeTok{xlab =} \StringTok{"Gender"}\NormalTok{,}
+\AttributeTok{ylab =} \StringTok{"Count"}\NormalTok{,}
+\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"green"}\NormalTok{, }\StringTok{"orange"}\NormalTok{))}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =}\NormalTok{ gender, }\AttributeTok{fill =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{, }\StringTok{"blue"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rworksheet_GERALDOY-4b_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#5. The monthly income of Dela Cruz family was spent on the following:}
+\CommentTok{\#a. Create a piechart that will include labels in percentage.Add some colors and title of the chart. Write the R scripts and show its output.}
+\NormalTok{monthly\_income }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{60}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{25}\NormalTok{)}
+\NormalTok{month\_labels }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(monthly\_income}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(monthly\_income)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{,}\DecValTok{1}\NormalTok{)}
+\NormalTok{month\_labels }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(month\_labels,}\StringTok{"\%"}\NormalTok{, }\AttributeTok{sep =}\StringTok{""}\NormalTok{)}
+\FunctionTok{pie}\NormalTok{(monthly\_income , }\AttributeTok{main =} \StringTok{"The monthly income of Dela Cruz family"}\NormalTok{, }\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(monthly\_income)), }\AttributeTok{labels =}\NormalTok{ month\_labels, }\AttributeTok{cex =} \FloatTok{0.8}\NormalTok{)}
+\FunctionTok{legend}\NormalTok{(}\FloatTok{1.5}\NormalTok{,}\FloatTok{0.5}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{"Food"}\NormalTok{, }\StringTok{"Electricity"}\NormalTok{, }\StringTok{"Savings"}\NormalTok{, }\StringTok{"Miscellaneous"}\NormalTok{), }\AttributeTok{cex =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{fill =}\FunctionTok{rainbow}\NormalTok{(}\FunctionTok{length}\NormalTok{(monthly\_income)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rworksheet_GERALDOY-4b_files/figure-latex/unnamed-chunk-1-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#6. Use the iris dataset.}
+\CommentTok{\#a. Check for the structure of the dataset using the str() function. Describe what you have seen in the output.}
+\FunctionTok{data}\NormalTok{(iris)}
+\FunctionTok{str}\NormalTok{(iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# ’data.frame’: 150 obs. of 5 variables:}
+\DocumentationTok{\#\# $ Sepal.Length: num 5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...}
+\DocumentationTok{\#\# $ Sepal.Width : num 3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...}
+\DocumentationTok{\#\# $ Petal.Length: num 1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...}
+\DocumentationTok{\#\# $ Petal.Width : num 0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...}
+\DocumentationTok{\#\# $ Species : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...}
+\CommentTok{\#the str(iris) output gives us a clear overview of the structure of the Iris dataset, including the number of observations, variables, and their respective data types.}
+
+\CommentTok{\#b. Create an R object that will contain the mean of the sepal.length, sepal.width,petal.length,and petal.width. What is the R script and its result?}
+
+\NormalTok{mean}\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(iris[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Sepal.Length"}\NormalTok{, }\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Petal.Length"}\NormalTok{, }\StringTok{"Petal.Width"}\NormalTok{)])}
+\NormalTok{mean}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sepal.Length  Sepal.Width Petal.Length  Petal.Width 
+##     5.843333     3.057333     3.758000     1.199333
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Sepal.Length Sepal.Width Petal.Length Petal.Width}
+\DocumentationTok{\#\# 5.843333 3.057333 3.758000 1.199333}
+
+\CommentTok{\#c. Create a pie chart for the Species distribution. Add title, legends, and colors. Write the R script and its result.}
+\FunctionTok{pie}\NormalTok{(}\FunctionTok{table}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species),}
+\AttributeTok{main =} \StringTok{"Species distribution"}\NormalTok{,}
+\AttributeTok{labels =} \FunctionTok{levels}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species),}
+\AttributeTok{col =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{,}\StringTok{"lightpink"}\NormalTok{,}\StringTok{"lightblue"}\NormalTok{))}
+\FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{, }\AttributeTok{legend =} \FunctionTok{levels}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species), }\AttributeTok{fill =} \FunctionTok{c}\NormalTok{(}\StringTok{"yellow"}\NormalTok{,}\StringTok{"green"}\NormalTok{,}\StringTok{"orange"}\NormalTok{) , }\AttributeTok{title =} \StringTok{"Species"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rworksheet_GERALDOY-4b_files/figure-latex/unnamed-chunk-1-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#d. Subset the species into setosa, versicolor, and virginica. Write the R scripts and show the last six (6) rows of each species.}
+\NormalTok{setosa\_lastsix}\OtherTok{\textless{}{-}} \FunctionTok{tail}\NormalTok{(}\FunctionTok{subset}\NormalTok{(iris, Species }\SpecialCharTok{==} \StringTok{"setosa"}\NormalTok{), }\AttributeTok{n =} \DecValTok{6}\NormalTok{)}
+\NormalTok{versicolor\_lastsix }\OtherTok{\textless{}{-}} \FunctionTok{tail}\NormalTok{(}\FunctionTok{subset}\NormalTok{(iris, Species }\SpecialCharTok{==} \StringTok{"versicolor"}\NormalTok{), }\AttributeTok{n =} \DecValTok{6}\NormalTok{)}
+\NormalTok{virginica\_lastsix}\OtherTok{\textless{}{-}} \FunctionTok{tail}\NormalTok{(}\FunctionTok{subset}\NormalTok{(iris, Species }\SpecialCharTok{==} \StringTok{"virginica"}\NormalTok{), }\AttributeTok{n =} \DecValTok{6}\NormalTok{)}
+\NormalTok{setosa\_lastsix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 45          5.1         3.8          1.9         0.4  setosa
+## 46          4.8         3.0          1.4         0.3  setosa
+## 47          5.1         3.8          1.6         0.2  setosa
+## 48          4.6         3.2          1.4         0.2  setosa
+## 49          5.3         3.7          1.5         0.2  setosa
+## 50          5.0         3.3          1.4         0.2  setosa
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Sepal.Length Sepal.Width Petal.Length Petal.Width Species}
+\DocumentationTok{\#\# 45 5.1 3.8 1.9 0.4 setosa}
+\DocumentationTok{\#\# 46 4.8 3.0 1.4 0.3 setosa}
+\DocumentationTok{\#\# 47 5.1 3.8 1.6 0.2 setosa}
+\DocumentationTok{\#\# 48 4.6 3.2 1.4 0.2 setosa}
+\DocumentationTok{\#\# 49 5.3 3.7 1.5 0.2 setosa}
+\DocumentationTok{\#\# 50 5.0 3.3 1.4 0.2 setosa}
+
+
+\NormalTok{versicolor\_lastsix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 95           5.6         2.7          4.2         1.3 versicolor
+## 96           5.7         3.0          4.2         1.2 versicolor
+## 97           5.7         2.9          4.2         1.3 versicolor
+## 98           6.2         2.9          4.3         1.3 versicolor
+## 99           5.1         2.5          3.0         1.1 versicolor
+## 100          5.7         2.8          4.1         1.3 versicolor
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Sepal.Length Sepal.Width Petal.Length Petal.Width Species}
+\DocumentationTok{\#\# 95 5.6 2.7 4.2 1.3 versicolor}
+\DocumentationTok{\#\# 96 5.7 3.0 4.2 1.2 versicolor}
+\DocumentationTok{\#\# 97 5.7 2.9 4.2 1.3 versicolor}
+\DocumentationTok{\#\# 98 6.2 2.9 4.3 1.3 versicolor}
+\DocumentationTok{\#\# 99 5.1 2.5 3.0 1.1 versicolor}
+\DocumentationTok{\#\# 100 5.7 2.8 4.1 1.3 versicolor}
+\NormalTok{virginica\_lastsix}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
+## 145          6.7         3.3          5.7         2.5 virginica
+## 146          6.7         3.0          5.2         2.3 virginica
+## 147          6.3         2.5          5.0         1.9 virginica
+## 148          6.5         3.0          5.2         2.0 virginica
+## 149          6.2         3.4          5.4         2.3 virginica
+## 150          5.9         3.0          5.1         1.8 virginica
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Sepal.Length Sepal.Width Petal.Length Petal.Width Species}
+\DocumentationTok{\#\# 145 6.7 3.3 5.7 2.5 virginica}
+\DocumentationTok{\#\# 146 6.7 3.0 5.2 2.3 virginica}
+\DocumentationTok{\#\# 147 6.3 2.5 5.0 1.9 virginica}
+\DocumentationTok{\#\# 148 6.5 3.0 5.2 2.0 virginica}
+\DocumentationTok{\#\# 149 6.2 3.4 5.4 2.3 virginica}
+\DocumentationTok{\#\# 150 5.9 3.0 5.1 1.8 virginica}
+
+\CommentTok{\#e. Create a scatterplot of the sepal.length and sepal.width using the different species(setosa,versicolor,virginica).}
+\CommentTok{\#Add a title = “Iris Dataset”, subtitle = “Sepal width and length, labels for the x and y axis, the pchsymbol and colors should be based on the species.}
+
+\FunctionTok{plot}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length, iris}\SpecialCharTok{$}\NormalTok{Sepal.Width,}
+\AttributeTok{pch =} \FunctionTok{as.integer}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species),}
+\AttributeTok{col =} \FunctionTok{as.integer}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species) }\SpecialCharTok{+} \DecValTok{1}\NormalTok{,}
+\AttributeTok{main =} \StringTok{"Iris Dataset"}\NormalTok{,}
+\AttributeTok{sub =} \StringTok{"Sepal width and length"}\NormalTok{,}
+\AttributeTok{xlab =} \StringTok{"Sepal Length"}\NormalTok{,}
+\AttributeTok{ylab =} \StringTok{"Sepal Width"}\NormalTok{,}
+\AttributeTok{cex =} \FloatTok{1.5}\NormalTok{,}
+\AttributeTok{lwd =} \FloatTok{1.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rworksheet_GERALDOY-4b_files/figure-latex/unnamed-chunk-1-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.factor}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] setosa     setosa     setosa     setosa     setosa     setosa    
+##   [7] setosa     setosa     setosa     setosa     setosa     setosa    
+##  [13] setosa     setosa     setosa     setosa     setosa     setosa    
+##  [19] setosa     setosa     setosa     setosa     setosa     setosa    
+##  [25] setosa     setosa     setosa     setosa     setosa     setosa    
+##  [31] setosa     setosa     setosa     setosa     setosa     setosa    
+##  [37] setosa     setosa     setosa     setosa     setosa     setosa    
+##  [43] setosa     setosa     setosa     setosa     setosa     setosa    
+##  [49] setosa     setosa     versicolor versicolor versicolor versicolor
+##  [55] versicolor versicolor versicolor versicolor versicolor versicolor
+##  [61] versicolor versicolor versicolor versicolor versicolor versicolor
+##  [67] versicolor versicolor versicolor versicolor versicolor versicolor
+##  [73] versicolor versicolor versicolor versicolor versicolor versicolor
+##  [79] versicolor versicolor versicolor versicolor versicolor versicolor
+##  [85] versicolor versicolor versicolor versicolor versicolor versicolor
+##  [91] versicolor versicolor versicolor versicolor versicolor versicolor
+##  [97] versicolor versicolor versicolor versicolor virginica  virginica 
+## [103] virginica  virginica  virginica  virginica  virginica  virginica 
+## [109] virginica  virginica  virginica  virginica  virginica  virginica 
+## [115] virginica  virginica  virginica  virginica  virginica  virginica 
+## [121] virginica  virginica  virginica  virginica  virginica  virginica 
+## [127] virginica  virginica  virginica  virginica  virginica  virginica 
+## [133] virginica  virginica  virginica  virginica  virginica  virginica 
+## [139] virginica  virginica  virginica  virginica  virginica  virginica 
+## [145] virginica  virginica  virginica  virginica  virginica  virginica 
+## Levels: setosa versicolor virginica
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [7] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [13] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [19] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [25] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [31] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [37] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [43] setosa setosa setosa setosa setosa setosa}
+\DocumentationTok{\#\# [49] setosa setosa versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [55] versicolor versicolor versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [61] versicolor versicolor versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [67] versicolor versicolor versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [73] versicolor versicolor versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [79] versicolor versicolor versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [85] versicolor versicolor versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [91] versicolor versicolor versicolor versicolor versicolor versicolor}
+\DocumentationTok{\#\# [97] versicolor versicolor versicolor versicolor virginica virginica}
+\DocumentationTok{\#\# [103] virginica virginica virginica virginica virginica virginica}
+\DocumentationTok{\#\# [109] virginica virginica virginica virginica virginica virginica}
+\DocumentationTok{\#\# [115] virginica virginica virginica virginica virginica virginica}
+\DocumentationTok{\#\# [121] virginica virginica virginica virginica virginica virginica}
+\DocumentationTok{\#\# [127] virginica virginica virginica virginica virginica virginica}
+\DocumentationTok{\#\# [133] virginica virginica virginica virginica virginica virginica}
+
+
+\DocumentationTok{\#\# [139] virginica virginica virginica virginica virginica virginica}
+\DocumentationTok{\#\# [145] virginica virginica virginica virginica virginica virginica}
+\DocumentationTok{\#\# Levels: setosa versicolor virginica}
+\CommentTok{\#as.factor(iris$Species) is a way of telling R that the "Species" variable should be treated as a categorical factor, providing a clearer representation of the nature of the data.}
+
+\DocumentationTok{\#\#Basic Cleaning and Transformation of Objects}
+\CommentTok{\#7. Import the alexa{-}file.xlsx. Check on the variations. Notice that there are ex{-}tra whitespaces among black variants (Black Dot, Black Plus, Black Show, BlackSpot). Also on the white variants (White Dot, White Plus, White Show, WhiteSpot).}
+\CommentTok{\#a. Rename the white and black variants by using gsub() function.}
+
+\FunctionTok{library}\NormalTok{(readxl)}
+\NormalTok{alexa\_file }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"/cloud/project/RWorksheet\#4b/alexa\_file.xlsx"}\NormalTok{)}
+
+\NormalTok{alexaVaration }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"Black Plus"}\NormalTok{, }\StringTok{"Black Plus"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexa\_file}\SpecialCharTok{$}\NormalTok{variation }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"Black Show"}\NormalTok{, }\StringTok{"Black Show"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexa\_file}\SpecialCharTok{$}\NormalTok{variation }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"Black Spot"}\NormalTok{, }\StringTok{"Black Spot"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexa\_file}\SpecialCharTok{$}\NormalTok{variation }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"Black Dot"}\NormalTok{, }\StringTok{"Black Dot"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexa\_file}\SpecialCharTok{$}\NormalTok{variation }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"White Dot"}\NormalTok{, }\StringTok{"White Dot"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexa\_file}\SpecialCharTok{$}\NormalTok{variation }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"White Plus"}\NormalTok{, }\StringTok{"White Plus"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexa\_file}\SpecialCharTok{$}\NormalTok{variation }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"White Show"}\NormalTok{, }\StringTok{"White Show"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexa\_file}\SpecialCharTok{$}\NormalTok{variation }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"White Spot"}\NormalTok{, }\StringTok{"White Spot"}\NormalTok{, alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"/cloud/project/RWorksheet\#4b/alexa\_file.xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{RWorksheet\#4b/alexa_file.xlsx}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#b. Get the total number of each variations and save it into another object. Save the object as variations.RData. Write the R scripts. What is its result?}
+
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Warning: package ’dplyr’ was built under R version 4.3.2}
+\DocumentationTok{\#\#}
+\DocumentationTok{\#\# Attaching package: ’dplyr’}
+\DocumentationTok{\#\# The following objects are masked from ’package:stats’:}
+\DocumentationTok{\#\#}
+\DocumentationTok{\#\# filter, lag}
+\DocumentationTok{\#\# The following objects are masked from ’package:base’:}
+\DocumentationTok{\#\#}
+\DocumentationTok{\#\# intersect, setdiff, setequal, union}
+\FunctionTok{save}\NormalTok{(alexa\_file, }\AttributeTok{file =} \StringTok{"variations.RData"}\NormalTok{)}
+\FunctionTok{load}\NormalTok{(}\StringTok{"variations.RData"}\NormalTok{)}
+\NormalTok{alexaVaration }\OtherTok{\textless{}{-}}\NormalTok{ alexa\_file}\SpecialCharTok{\%\textgreater{}\%}\FunctionTok{count}\NormalTok{(alexa\_file}\SpecialCharTok{$}\NormalTok{variation)}
+\NormalTok{alexaVaration}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 16 x 2
+##    `alexa_file$variation`           n
+##    <chr>                        <int>
+##  1 Black                          261
+##  2 Black  Dot                     516
+##  3 Black  Plus                    270
+##  4 Black  Show                    265
+##  5 Black  Spot                    241
+##  6 Charcoal Fabric                430
+##  7 Configuration: Fire TV Stick   350
+##  8 Heather Gray Fabric            157
+##  9 Oak Finish                      14
+## 10 Sandstone Fabric                90
+## 11 Walnut Finish                    9
+## 12 White                           91
+## 13 White  Dot                     184
+## 14 White  Plus                     78
+## 15 White  Show                     85
+## 16 White  Spot                    109
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# \# A tibble: 16 x 2}
+\DocumentationTok{\#\# ‘alexa\_file$variation‘ n}
+\DocumentationTok{\#\# \textless{}chr\textgreater{} \textless{}int\textgreater{}}
+\DocumentationTok{\#\# 1 Black 261}
+\DocumentationTok{\#\# 2 Black Plus 270}
+\DocumentationTok{\#\# 3 Black Dot 516}
+\DocumentationTok{\#\# 4 Black Show 265}
+\DocumentationTok{\#\# 5 Black Spot 241}
+\DocumentationTok{\#\# 6 Charcoal Fabric 430}
+\DocumentationTok{\#\# 7 Configuration: Fire TV Stick 350}
+\DocumentationTok{\#\# 8 Heather Gray Fabric 157}
+\DocumentationTok{\#\# 9 Oak Finish 14}
+\DocumentationTok{\#\# 10 Sandstone Fabric 90}
+\DocumentationTok{\#\# 11 Walnut Finish 9}
+\DocumentationTok{\#\# 12 White 91}
+\DocumentationTok{\#\# 13 White Dot 184}
+\DocumentationTok{\#\# 14 White Plus 78}
+\DocumentationTok{\#\# 15 White Show 85}
+\DocumentationTok{\#\# 16 White Spot 109}
+\CommentTok{\#c. From the variations.RData, create a barplot(). Complete the details of the chart which include the title, color, labels of each bar.}
+\FunctionTok{barplot}\NormalTok{(}\AttributeTok{height =}\NormalTok{ alexaVaration}\SpecialCharTok{$}\NormalTok{n,}
+\AttributeTok{names.arg =}\NormalTok{ alexaVaration}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{alexa\_file$variation}\StringTok{\textasciigrave{}}\NormalTok{,}
+\AttributeTok{col =} \StringTok{"yellowgreen"}\NormalTok{,}
+\AttributeTok{main =} \StringTok{"Alexa Varations"}\NormalTok{,}
+\AttributeTok{las =} \DecValTok{2}\NormalTok{,}
+\AttributeTok{cex.names =} \FloatTok{0.58}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rworksheet_GERALDOY-4b_files/figure-latex/unnamed-chunk-1-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#d. Create a barplot() for the black and white variations. Plot it in 1 frame, side by side. Complete the details of the chart.}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\NormalTok{black\_variants }\OtherTok{\textless{}{-}}\NormalTok{ alexaVaration[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,]}
+\NormalTok{white\_variants }\OtherTok{\textless{}{-}}\NormalTok{ alexaVaration[}\DecValTok{12}\SpecialCharTok{:}\DecValTok{16}\NormalTok{,]}
+\FunctionTok{barplot}\NormalTok{(}
+\AttributeTok{height =}\NormalTok{ black\_variants}\SpecialCharTok{$}\NormalTok{n,}
+\AttributeTok{names.arg =}\NormalTok{ black\_variants}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{alexa\_file$variation}\StringTok{\textasciigrave{}}\NormalTok{,}
+\AttributeTok{main =} \StringTok{"Black Variants"}\NormalTok{,}
+\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\DecValTok{5}\NormalTok{),}
+\AttributeTok{xlab =} \StringTok{\textquotesingle{}Total Numbers\textquotesingle{}}\NormalTok{,}
+\AttributeTok{ylab =} \StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{,}
+\AttributeTok{cex.names =} \FloatTok{0.35}\NormalTok{,)}
+\FunctionTok{barplot}\NormalTok{(}\AttributeTok{height =}\NormalTok{ white\_variants}\SpecialCharTok{$}\NormalTok{n,}
+\AttributeTok{names.arg =}\NormalTok{ white\_variants}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{alexa\_file$variation}\StringTok{\textasciigrave{}}\NormalTok{,}
+\AttributeTok{main =} \StringTok{"White Variants"}\NormalTok{,}
+\AttributeTok{col =} \FunctionTok{rainbow}\NormalTok{(}\DecValTok{5}\NormalTok{),}
+\AttributeTok{xlab =} \StringTok{\textquotesingle{}Total Numbers\textquotesingle{}}\NormalTok{,}
+\AttributeTok{ylab =} \StringTok{\textquotesingle{}Frequency\textquotesingle{}}\NormalTok{,}\AttributeTok{cex.names =} \FloatTok{0.35}\NormalTok{,)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Rworksheet_GERALDOY-4b_files/figure-latex/unnamed-chunk-1-7.pdf}
+
+\end{document}
